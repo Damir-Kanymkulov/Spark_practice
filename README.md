@@ -1,6 +1,6 @@
 # Spark_practice
 
-1. o	Check restaurant data for incorrect (null) values (latitude and longitude). For incorrect values, map latitude and longitude from the OpenCage Geocoding API in a job via the REST API.
+1. Check restaurant data for incorrect (null) values (latitude and longitude). For incorrect values, map latitude and longitude from the OpenCage Geocoding API in a job via the REST API.
 Steps:
 - PySpark and Requests libraries were imported
 - Spark session was created using function from PySpark library.
