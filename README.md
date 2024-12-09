@@ -1,4 +1,4 @@
-<img width="910" alt="Task 1 2" src="https://github.com/user-attachments/assets/d5b61f16-7bd2-4eb2-8944-d898294186a9"># Spark_practice
+# Spark_practice
 
 1. Check restaurant data for incorrect (null) values (latitude and longitude). For incorrect values, map latitude and longitude from the OpenCage Geocoding API in a job via the REST API.
 Steps:
