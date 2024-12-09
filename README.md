@@ -2,7 +2,7 @@
 Author: Damir Kanymkulov
 
 1. Check restaurant data for incorrect (null) values (latitude and longitude). For incorrect values, map latitude and longitude from the OpenCage Geocoding API in a job via the REST API.
-<br> **Steps:**
+<br> **Steps of the check_restaurant_data.py code:**
 - pyspark.sql.SparkSession, pyspark.sql.functions, requests, and os libraries were imported.
 - Spark session was created using pyspark.sql.SparkSession library.
 - My own OpenCage Geocoding API key was initialized and used in the get_coordinates() function.
@@ -14,7 +14,7 @@ Author: Damir Kanymkulov
 - SparkSession was stopped at the end.
 
 2. Generate a geohash by latitude and longitude using a geohash library like geohash-java. Your geohash should be four characters long and placed in an extra column.
-<br> **Steps:**
+<br> **Steps of the generate_geohash_restaurant.py and generate_geohash_weather.py codes:**
 - pyspark.sql.SparkSession, pyspark.sql.functions for udf and col, pyspark.sql.types for StringType, os, and pygeohash libraries were imported.
 - Spark session was initialized using pyspark.sql.SparkSession library.
 - A function to compute geohash was defined. It is called compute_geohash(). This function takes latitude and longitude as input and returns a four-character geohash using pygeohash.encode() function.
@@ -27,7 +27,7 @@ Author: Damir Kanymkulov
 After generating a four-character geohash for corrected restaurant data, the same procedure was done to generate the four-character geohash for the weather data. All weather parquet files were combined and loaded using get_all_parquet_files() and spark.read.parquet() functions. Here, get_all_parquet_files() was defined to list all weather parquet files within the directory.
 
 3. Left-join weather and restaurant data using the four-character geohash. Make sure to avoid data multiplication and keep your job idempotent.
-<br> **Steps:**
+<br> **Steps of the left_join_data.py code:**
 - pyspark.sql.SparkSession library was imported.
 - The weather and restaurant datasets with geohash column were loaded from Parquet files into Spark DataFrames via spark.read.parquet() function.
 - Both datasets were left-joined using the four-character geohash with restaurant_data.join(weather_data, on="geohash", how="left").
