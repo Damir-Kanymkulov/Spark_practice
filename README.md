@@ -1,7 +1,7 @@
 # Spark_practice
 
 1. Check restaurant data for incorrect (null) values (latitude and longitude). For incorrect values, map latitude and longitude from the OpenCage Geocoding API in a job via the REST API.
-Steps:
+<br> Steps:
 - pyspark.sql.SparkSession, pyspark.sql.functions, requests, and os libraries were imported.
 - Spark session was created using pyspark.sql.SparkSession library.
 - My own OpenCage Geocoding API key was initialized and used in the get_coordinates() function.
@@ -13,7 +13,7 @@ Steps:
 - SparkSession was stopped at the end.
 
 2. Generate a geohash by latitude and longitude using a geohash library like geohash-java. Your geohash should be four characters long and placed in an extra column.
-Steps:
+<br> Steps:
 - pyspark.sql.SparkSession, pyspark.sql.functions for udf and col, pyspark.sql.types for StringType, os, and pygeohash libraries were imported.
 - Spark session was initialized using pyspark.sql.SparkSession library.
 - A function to compute geohash was defined. It is called compute_geohash(). This function takes latitude and longitude as input and returns a four-character geohash using pygeohash.encode() function.
