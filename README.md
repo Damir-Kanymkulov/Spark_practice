@@ -24,3 +24,11 @@
 - SparkSession was stopped at the end.
 
 After generating a four-character geohash for corrected restaurant data, the same procedure was done to generate the four-character geohash for the weather data. All weather parquet files were combined and loaded using get_all_parquet_files() and spark.read.parquet() functions. Here, get_all_parquet_files() was defined to list all weather parquet files within the directory.
+
+3. Left-join weather and restaurant data using the four-character geohash. Make sure to avoid data multiplication and keep your job idempotent.
+<br> **Steps:**
+- pyspark.sql.SparkSession library was imported.
+- The weather and restaurant datasets with geohash column were loaded from Parquet files into Spark DataFrames via spark.read.parquet() function.
+- Both datasets were left-joined using the four-character geohash with restaurant_data.join(weather_data, on="geohash", how="left").
+- The first 100 rows of the output DataFrame were displayed. Then, the enriched dataset, partitioned by geohash, was stored as a parquet file.
+- SparkSession was stopped at the end.
