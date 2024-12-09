@@ -14,7 +14,7 @@ Steps:
 
 2. Generate a geohash by latitude and longitude using a geohash library like geohash-java. Your geohash should be four characters long and placed in an extra column.
 Steps:
-- pyspark.sql.SparkSession, pyspark.sql.functions for udf, pyspark.sql.types for StringType, and pygeohash libraries were imported.
+- pyspark.sql.SparkSession, pyspark.sql.functions for udf and col, pyspark.sql.types for StringType, os, and pygeohash libraries were imported.
 - Spark session was initialized using pyspark.sql.SparkSession library.
 - A function to compute geohash was defined. It is called compute_geohash(). This function takes latitude and longitude as input and returns a four-character geohash using pygeohash.encode() function.
 - The compute_geohash() function was registered as a UDF function for Spark DataFrame operations.
@@ -23,4 +23,4 @@ Steps:
 - The updated data was saved to the parquet file.
 - SparkSession was stopped at the end.
 
-After generating a four-character geohash for corrected restaurant data, the same procedure was done to generate the four-character geohash for the weather data.
+After generating a four-character geohash for corrected restaurant data, the same procedure was done to generate the four-character geohash for the weather data. All weather parquet files were combined and loaded using get_all_parquet_files() and spark.read.parquet() functions. Here, get_all_parquet_files() was defined to list all weather parquet files within the directory.
